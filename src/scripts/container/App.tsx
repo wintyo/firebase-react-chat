@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { hot } from 'react-hot-loader';
 
+import Router from './components/Router';
+
 const App = () => {
   return (
-    <div>test</div>
+    <div>
+      <Router />
+    </div>
   );
 }
 
