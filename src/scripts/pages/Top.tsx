@@ -7,7 +7,13 @@ export default () => {
   return (
     <div>
       <div>top</div>
-      <button onClick={() => { history.push('/page1'); }}>page1</button>
+      <button
+        onClick={() => {
+          history.push('/page1');
+        }}
+      >
+        page1
+      </button>
     </div>
   );
-}
+};

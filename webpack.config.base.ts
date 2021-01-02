@@ -17,8 +17,8 @@ const config: webpack.Configuration = {
         use: [
           {
             loader: 'ts-loader',
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.pug$/,
@@ -27,9 +27,9 @@ const config: webpack.Configuration = {
             loader: 'pug-loader',
             options: {
               pretty: true,
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
@@ -44,8 +44,8 @@ const config: webpack.Configuration = {
           },
           esModule: false,
         },
-      }
-    ]
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -53,7 +53,7 @@ const config: webpack.Configuration = {
       '~': path.resolve(__dirname, './src/scripts/'),
       images: path.resolve(__dirname, './src/assets/images/'),
       'react-dom': '@hot-loader/react-dom',
-    }
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

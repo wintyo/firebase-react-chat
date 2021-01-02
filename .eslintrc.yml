@@ -1,0 +1,34 @@
+root: true
+env:
+  browser: true
+  node: true
+extends:
+  - plugin:prettier/recommended
+  - prettier/@typescript-eslint
+plugins:
+  - '@typescript-eslint'
+  - 'import'
+  - 'react'
+parser: '@typescript-eslint/parser'
+parserOptions:
+  warnOnUnsupportedTypeScriptVersion: false
+rules:
+  camelcase:
+    - error
+    - properties: always
+      ignoreDestructuring: true
+  no-useless-constructor: 'off'
+  require-await: 'off'
+  no-unused-vars: 'off'
+  "@typescript-eslint/no-unused-vars":
+    - error
+    - args: after-used
+  "@typescript-eslint/no-inferrable-types": warn
+  import/named: 'off'
+  import/order: 'off'
+  prefer-promise-reject-errors: 'off'
+overrides:
+  # @types 以下ではインターフェースのプレフィックスを強制しない
+  - files: [./src/scripts/@types/**/*.ts]
+    rules:
+      "@typescript-eslint/interface-name-prefix": 'off'

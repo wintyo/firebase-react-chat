@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
 
 import Router from './components/Router';
@@ -9,6 +9,6 @@ const App = () => {
       <Router />
     </div>
   );
-}
+};
 
 export default hot(module)(App);

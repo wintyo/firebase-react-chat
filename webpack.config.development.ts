@@ -39,11 +39,7 @@ const config = merge(baseConfig, {
 // @ts-ignore
 config.module.rules.push({
   test: /\.css$/,
-  use: [
-    'css-hot-loader',
-    MiniCssExtractPlugin.loader,
-    'css-loader',
-  ],
+  use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader'],
 });
 
 // @ts-ignore
@@ -72,6 +68,7 @@ config.module.rules.push({
       options: {
         sourceMap: true,
         postcssOptions: {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           plugins: (loader: any) => [
             autoprefixer(),
             // new IconfontWebpackPlugin(loader),
