@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-const merge = require('webpack-merge');
+import merge from 'webpack-merge';
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -20,6 +20,7 @@ const config = merge(baseConfig, {
   ],
 } as webpack.Configuration);
 
+// @ts-ignore
 config.module.rules.push({
   test: /\.(sass|scss)$/,
   use: [
@@ -41,11 +42,14 @@ config.module.rules.push({
     {
       loader: 'postcss-loader',
       options: {
-        plugins: (loader: any) => [
-          // new IconfontWebpackPlugin(loader),
-          autoprefixer(),
-          cssnano(),
-        ],
+        postcssOptions: {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          plugins: (loader: any) => [
+            // new IconfontWebpackPlugin(loader),
+            autoprefixer(),
+            cssnano(),
+          ],
+        },
       },
     },
     {
