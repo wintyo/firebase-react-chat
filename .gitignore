@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.firebase
+firebase-debug.log
+config/
+
+# エラー関係
+package-lock.json
+yarn-error.log
+npm-debug.log
+
+# エディタなどで生成されるファイル
+.idea/
+.DS_Store
