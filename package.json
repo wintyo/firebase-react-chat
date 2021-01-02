@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "start": "yarn && cross-env TS_NODE_PROJECT=tsconfig-for-node.json webpack-cli serve --config webpack.config.development.ts",
-    "build": "yarn && rimraf dist && cross-env TS_NODE_PROJECT=tsconfig-for-node.json webpack --config webpack.config.production.ts"
+    "build": "yarn && rimraf dist && cross-env TS_NODE_PROJECT=tsconfig-for-node.json webpack --config webpack.config.production.ts",
+    "deploy": "firebase deploy"
   },
   "husky": {
     "hooks": {
@@ -30,6 +31,7 @@
   "author": "wintyo <wintyo1024@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "firebase": "^8.2.1",
     "lodash-es": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -39,6 +41,7 @@
   "devDependencies": {
     "@hot-loader/react-dom": "^17.0.1",
     "@types/classnames": "^2.2.11",
+    "@types/firebase": "^3.2.1",
     "@types/lodash-es": "^4.17.4",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
@@ -55,6 +58,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
+    "firebase-tools": "^9.1.0",
     "html-webpack-plugin": "^4.5.0",
     "husky": "^4.3.6",
     "ip": "^1.1.5",
