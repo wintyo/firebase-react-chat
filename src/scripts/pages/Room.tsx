@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import DB from '~/api/DB';
+import { useFirestoreMessage } from '~/hooks/firestoreMessage';
 
 export default () => {
   const { roomId } = useParams<any>();
   const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<any[]>([]);
+  const [text, setText] = useState('');
 
-  useEffect(() => {
-    (async () => {
-      const data = await DB.fetchMessages(roomId);
-      console.log(data);
-      setMessages(data);
-    })();
-  }, []);
+  const [messages, updateMessages] = useFirestoreMessage(roomId);
 
   return (
     <div>
@@ -32,17 +25,17 @@ export default () => {
         <br />
         <input
           type="text"
-          value={message}
+          value={text}
           placeholder="メッセージ"
           onChange={(event) => {
-            setMessage(event.currentTarget.value);
+            setText(event.currentTarget.value);
           }}
         />
         <br />
         <button
           onClick={async () => {
-            await DB.sendMessage(roomId, name, message);
-            setMessage('');
+            await updateMessages.add(name, text);
+            setText('');
           }}
         >
           送信
@@ -53,7 +46,7 @@ export default () => {
           <li key={message.id}>
             name: {message.name}
             <br />
-            message: {message.message}
+            text: {message.text}
           </li>
         ))}
       </ul>
