@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useFirestoreMessage } from '~/hooks/firestoreMessage';
+import { useDatabasePresenceUsers } from '~/hooks/databasePresence';
 
 export default () => {
   const { roomId } = useParams<any>();
@@ -9,10 +10,12 @@ export default () => {
   const [text, setText] = useState('');
 
   const [messages, updateMessages] = useFirestoreMessage(roomId);
+  const [users, updateUser] = useDatabasePresenceUsers(roomId);
 
   return (
     <div>
       Room {roomId}
+      <div>接続中ユーザー: {JSON.stringify(users)}</div>
       <div>
         <input
           type="text"
@@ -20,6 +23,7 @@ export default () => {
           placeholder="名前"
           onChange={(event) => {
             setName(event.currentTarget.value);
+            updateUser.update(event.currentTarget.value);
           }}
         />
         <br />
